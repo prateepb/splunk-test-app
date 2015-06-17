@@ -1,0 +1,82 @@
+<dashboard>
+  <label>Denied Events</label>
+  <description>Denied Events</description>
+  <row>
+    <panel>
+      <title>Last 5 mins</title>
+      <single>
+        <search>
+          <query>sourcetype=waratek_security rule_action=DENY | stats count</query>
+          <earliest>rt-5m</earliest>
+          <latest>rt</latest>
+        </search>
+        <option name="beforeLabel">There have been</option>
+        <option name="underLabel">total events</option>
+        <option name="afterLabel">in the past 5 mins.</option>
+        <option name="field">count</option>
+        <option name="linkFields">result</option>
+        <option name="linkSearch">sourcetype=waratek_security rule_action=DENY | stats count</option>
+        <option name="linkView">search</option>
+        <option name="drilldown">none</option>
+      </single>
+      <chart>
+        <search>
+          <query>sourcetype=waratek_security rule_action=DENY | top rule_category</query>
+          <earliest>rt-5m</earliest>
+          <latest>rt</latest>
+        </search>
+        <option name="charting.chart">pie</option>
+      </chart>
+      <table>
+        <search>
+          <query>sourcetype=waratek_security rule_action=DENY | top rule_category | eval percent=round(percent,2)</query>
+          <earliest>rt-5m</earliest>
+          <latest>rt</latest>
+        </search>
+        <option name="drilldown">cell</option>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+    <panel>
+      <title>Last Hour</title>
+      <single>
+        <search>
+          <query>sourcetype=waratek_security rule_action=DENY | stats count</query>
+          <earliest>rt-1h</earliest>
+          <latest>rt</latest>
+        </search>
+        <option name="beforeLabel">There have been</option>
+        <option name="underLabel">total events</option>
+        <option name="afterLabel">in the past hour.</option>
+        <option name="field">count</option>
+        <option name="linkFields">result</option>
+        <option name="linkSearch">sourcetype=waratek_security rule_action=DENY earliest=-h | stats count</option>
+        <option name="linkView">search</option>
+        <option name="drilldown">none</option>
+      </single>
+      <chart>
+        <search>
+          <query>sourcetype=waratek_security rule_action=DENY | top rule_category</query>
+          <earliest>rt-1h</earliest>
+          <latest>rt</latest>
+        </search>
+        <option name="charting.chart">pie</option>
+      </chart>
+      <table>
+        <search>
+          <query>sourcetype=waratek_security rule_action=DENY | top rule_category | eval percent=round(percent,2)</query>
+          <earliest>rt-1h</earliest>
+          <latest>rt</latest>
+        </search>
+        <option name="drilldown">cell</option>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+</dashboard>

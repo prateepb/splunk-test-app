@@ -1,0 +1,11 @@
+<dashboard>
+  <label>Overview</label>
+  <row>
+    <html>
+      <img src="/static/app/waratek/logo.png" alt="Waratek Logo"/>
+      <h1>This is a test</h1>
+      <code>This is a test</code>
+      <pre>This is a test</pre>
+    </html>
+  </row>
+</dashboard>
